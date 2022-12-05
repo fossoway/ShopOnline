@@ -1,0 +1,433 @@
+.main__wrapper {
+  display: grid;
+  grid-template-rows: 480px repeat(4, 228px);
+  grid-template-columns: repeat(2, 245px) 550px repeat(2, 245px);
+  gap: 60px;
+  grid-template-areas:
+  "laptop laptop laptop laptop laptop"
+  "book time sneakers gift gift"
+  "shoes shoes sneakers benefit benefit"
+  "decor decor decor dress house"
+  "decor decor decor dress balls";
+}
+
+.main__link {
+ display: grid;
+  border-radius: 20px;
+}
+
+.main__link-laptop {
+  grid-area: laptop;
+  background-image: url("../img/laptop.png");
+  background-size: cover;
+  padding: 40px 112px;
+}
+
+.main__link-book {
+  grid-area: book;
+  background-image: url("../img/book.png");
+  background-size: cover;
+  padding: 80px 35px 20px 20px;
+}
+
+.main__link-time {
+  grid-area: time;
+  background-image: url("../img/sale.png");
+  background-size: cover;
+  padding: 67px 20px 20px 14px;
+}
+
+.main__link-shoes {
+  grid-area: shoes;
+  background-image: url("../img/shoes.png");
+  background-size: cover;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.main__link-sneakers {
+  grid-area: sneakers;
+  background-image: url("../img/sneakers.png");
+  background-size: cover;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.main__link-gift {
+  grid-area: gift;
+  background-image: url("../img/gift.png");
+  background-size: cover;
+  padding: 94px 180px 30px 30px;
+}
+
+.main__link-benefit {
+  grid-area: benefit;
+  background-image: url("../img/benefit.png");
+  background-size: cover;
+  padding: 120px 20px 20px 30px;
+}
+
+.main__link-decor {
+  grid-area: decor;
+  background-image: url("../img/decor.png");
+  background-size: cover;
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+
+.main__link-dress {
+  grid-area: dress;
+  background-image: url("../img/dress.png");
+  background-size: cover;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+.main__link-house {
+  grid-area: house;
+  background-image: url("../img/house.png");
+  background-size: cover;
+  padding: 20px
+}
+
+.main__link-balls {
+  grid-area: balls;
+  background-image: url("../img/balls.png");
+  background-size: cover;
+}
+
+.main__text {
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 52px;
+  align-self: end;
+}
+
+.main__text-sale {
+  font-weight: 700;
+  font-size: 70px;
+  line-height: 130%;
+  align-self: end;
+}
+
+.main__timer {
+  text-align: center;
+  justify-self: center;
+  align-self: end;
+}
+
+.main__text-promo {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.main__text-timer {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 130%;
+}
+
+.main__text-number {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 130%;
+}
+
+.main__text-30px {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 39px;
+}
+
+.main__text-top {
+  align-self: start;
+}
+
+.main__sale {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-color: var(--sale-background);
+  justify-self: end;
+  align-self: end;
+  text-align: center;
+  line-height: 88px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.main__sale-top {
+  align-self: start;
+  justify-self: start;
+}
+
+.main__text-blue {
+  width: 510px;
+  height: 167px;
+  background-color: var(--promo-background);
+  border-radius: 20px;
+  padding: 24px 26px;
+}
+
+.main__text-48px {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.main__sale-block {
+  display: inline-block;
+  margin-left: 39px;
+}
+
+.main__text-red {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 108px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--promo-text);
+  width: 643px;
+  height: 108px;
+  border-radius: 20px;
+  background-color: var(--main-color);
+}
+
+@media (max-width: 1024px) {
+  .main__wrapper {
+    grid-template-rows: 314px 202px repeat(3, 194px) 418px;
+    grid-template-columns: repeat(4, 217px);
+    gap: 18px 30px;
+    grid-template-areas:
+  "laptop laptop laptop laptop"
+  "book time sneakers sneakers"
+  "shoes shoes sneakers sneakers"
+  "gift gift dress house"
+  "benefit benefit dress balls"
+  "decor decor decor decor";
+  }
+
+  .main__link-laptop {
+    padding: 40px 80px;
+  }
+
+  .main__link-book {
+    padding: 101px 14px 32px 13px;
+  }
+
+  .main__link-gift {
+    padding: 89px 179px 22px 30px;
+  }
+
+  .main__link-benefit {
+    padding: 96px 10px 10px 30px;
+  }
+
+  .main__text {
+    font-size: 30px;
+    line-height: 39px;
+  }
+
+  .main__text-sale {
+    font-size: 40px;
+  }
+
+  .main__text-promo {
+    font-size: 16px;
+  }
+
+  .main__text-timer {
+    font-size: 20px;
+  }
+
+  .main__text-number {
+    font-size: 40px;
+  }
+
+  .main__text-30px {
+    font-size: 24px;
+  }
+
+  .main__text-blue {
+    width: 406px;
+    height: 143px;
+    padding: 20px;
+  }
+
+  .main__text-red {
+    width: 513px;
+    height: 83px;
+    font-size: 30px;
+    line-height: 83px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main__wrapper {
+    grid-template-rows: 280px repeat(4, 130px) 337px;
+    grid-template-columns: repeat(2, 140px) 182px 178px;
+    gap: 20px;
+  }
+
+  .main__link-laptop {
+    background-position: center;
+    padding: 33px 80px;
+  }
+
+  .main__link-book {
+    padding: 43px 15px 13px 10px;
+  }
+
+  .main__link-time {
+    padding: 15px 15px 10px 10px;
+  }
+
+  .main__link-gift {
+    padding: 70px 143px 18px 21px;
+  }
+
+  .main__link-benefit {
+    padding: 66px 10px 10px 21px;
+  }
+
+  .main__text {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .main__text-sale {
+    font-size: 30px;
+  }
+
+  .main__text-promo {
+    font-size: 12px;
+  }
+
+  .main__text-timer {
+    font-size: 16px;
+  }
+
+  .main__text-number {
+    font-size: 30px;
+    line-height: 39px;
+  }
+
+  .main__text-30px {
+    font-size: 18px;
+  }
+
+  .main__sale {
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+  }
+
+  .main__text-blue {
+    width: 360px;
+    height: 61px;
+    font-size: 16px;
+  }
+
+  .main__text-red {
+    width: 347px;
+    height: 68px;
+    font-size: 20px;
+    line-height: 68px;
+  }
+}
+
+@media (max-width: 320px) {
+  .main__wrapper {
+    grid-template-rows: 340px repeat(2, 120px) 206px repeat(2, 118px) repeat(2, 95px) 123px;
+    grid-template-columns: repeat(2, 130px);
+    gap: 20px;
+    grid-template-areas:
+    "laptop laptop"
+    "book time"
+    "shoes shoes"
+    "sneakers sneakers"
+    "gift gift"
+    "benefit benefit"
+    "dress house"
+    "dress balls"
+    "decor decor";
+  }
+
+  .main__text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .main__text-sale {
+    font-size: 22px;
+    align-self: start;
+  }
+
+  .main__text-promo {
+    font-size: 8px;
+  }
+
+  .main__text-timer {
+    font-size: 12px;
+  }
+
+  .main__text-number {
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .main__link-laptop {
+    background-image: url("../img/laptop320.png");
+    padding: 30px 25px;
+  }
+
+  .main__text-blue {
+    width: 260px;
+    height: 36px;
+    font-size: 12px;
+    line-height: 0;
+  }
+
+  .main__text-48px {
+    font-size: 16px;
+    line-height: 0;
+  }
+
+  .main__link-gift {
+    grid-area: gift;
+    background-image: url("../img/gift.png");
+    background-size: cover;
+    padding: 88px 89px 16px 10px;
+  }
+
+  .main__link-decor {
+    padding-bottom: 10px;
+    padding-left: 15px;
+    background-position: bottom;
+  }
+
+  .main__link-benefit {
+    padding: 63px 5px 5px 10px;
+  }
+
+  .main__sale-block {
+    margin-left: 100px;
+  }
+
+  .main__link-dress {
+    padding-bottom: 10px;
+    padding-right: 10px;
+  }
+
+  .main__link-house {
+    padding: 10px
+  }
+
+  .main__text-red {
+    width: 250px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+  }
+}
