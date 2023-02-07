@@ -1,3 +1,5 @@
+import { declOfNum, formatNum } from "./help.js";
+
 const createTimer = (app) => {
   const title = document.createElement('p');
   title.classList.add('main__text', 'main__text-promo');
@@ -55,21 +57,13 @@ const timer = (deadline, app, timerDeadline) => {
     return {timeRemaining, days, hours, minutes, seconds};
   };
 
-  const declOfNum = (n, text_forms) => {
-    n = Math.abs(n) % 100;
-    const n1 = n % 10;
-    if (n > 10 && n < 20) { return text_forms[2]; }
-    if (n1 > 1 && n1 < 5) { return text_forms[1]; }
-    if (n1 === 1) { return text_forms[0]; }
-    return text_forms[2];
-  };
 
   const start = () => {
     const timer = getTimeRemaining();
 
     timerDeadline.timerBlockDay.textContent = timer.days;
-    timerDeadline.timerBlockHour.textContent = timer.hours < 10 ? '0' + timer.hours : timer.hours;
-    timerDeadline.timerBlockMin.textContent = timer.minutes < 10 ? '0' + timer.minutes : timer.minutes;
+    timerDeadline.timerBlockHour.textContent = formatNum(timer.hours);
+    timerDeadline.timerBlockMin.textContent = formatNum(timer.minutes);
 
     timerDeadline.textBlockDay.textContent = declOfNum(timer.days, ['день', 'дня', 'дней']);
     timerDeadline.textBlockHour.textContent = declOfNum(timer.hours, ['час', 'часа', 'часов']);
@@ -79,9 +73,9 @@ const timer = (deadline, app, timerDeadline) => {
 
     if (timer.days === 0 && timer) {
       clearTimeout(intervalDays)
-      timerDeadline.timerBlockDay.textContent = timer.hours < 10 ? '0' + timer.hours : timer.hours;
-      timerDeadline.timerBlockHour.textContent = timer.minutes < 10 ? '0' + timer.minutes : timer.minutes;
-      timerDeadline.timerBlockMin.textContent = timer.seconds < 10 ? '0' + timer.seconds : timer.seconds;
+      timerDeadline.timerBlockDay.textContent = formatNum(timer.hours);
+      timerDeadline.timerBlockHour.textContent = formatNum(timer.minutes);
+      timerDeadline.timerBlockMin.textContent = formatNum(timer.seconds);
 
       timerDeadline.textBlockDay.textContent = declOfNum(timer.hours, ['час', 'часа', 'часов']);
       timerDeadline.textBlockHour.textContent = declOfNum(timer.minutes, ['минута', 'минуты', 'минут']);
@@ -96,7 +90,6 @@ const timer = (deadline, app, timerDeadline) => {
     if (timer.timeRemaining <= 0) {
       app.classList.add('main__not-visible');
     }
-
   };
 
   start();
