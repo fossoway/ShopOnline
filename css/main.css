@@ -193,6 +193,10 @@
   background-color: var(--main-color);
 }
 
+.main__not-visible {
+  visibility: hidden;
+}
+
 @media (max-width: 1024px) {
   .main__wrapper {
     grid-template-rows: 314px 202px repeat(3, 194px) 418px;

@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
         rel="stylesheet">
   <link rel="stylesheet" href="css/index.css">
+  <script type="module" src="timer.js"></script>
 </head>
 <body>
 <header class="header">
@@ -88,14 +89,17 @@
         <p class="main__text main__text-sale">
           -50% на все ноутбуки
         </p>
-        <div class="main__timer">
+        <div class="main__timer" data-timer-deadline="2023/02/14 00:00">
           <p class="main__text main__text-promo">
             До конца акции:
           </p>
           <p class="main__text main__text-timer">
-            <span class="main__text main__text-number">3</span> дня
-            <span class="main__text main__text-number">8</span> часов
-            <span class="main__text main__text-number">43</span> минуты
+            <span class="main__text main__text-number main__text-numDay">3</span>
+            <span class="main__text main__text-textDay">дня</span>
+            <span class="main__text main__text-number main__text-numHour">8</span>
+            <span class="main__text main__text-textHour">часов</span>
+            <span class="main__text main__text-number main__text-numMinute">43</span>
+            <span class="main__text main__text-textMin">минуты</span>
           </p>
         </div>
       </a>
