@@ -1,0 +1,44 @@
+.article__main{
+  padding: 100px 75px;
+  color: #2D2D2D;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+.navigation{
+  display: flex;
+  gap: 16px;
+}
+.article__title{
+  margin-bottom: 40px;
+}
+.article__body{
+  margin-bottom: 100px;
+}
+.article__footer{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.article__wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+.aside{
+  display: flex;
+  flex-direction: column;
+}
+.article{
+  width: 1095px;
+}
+.article__author{
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 150%;
+  color: black;
+}
+.article__about{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
