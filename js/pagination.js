@@ -1,5 +1,18 @@
-import {meta, currentPage} from "./blog.js";
+import {meta, page as currentPage} from "./blog.js";
 
+
+const pageList = document.querySelector('.pagination__list');
+const rightButton = document.querySelector('.pagination__arrow-right');
+const leftButton = document.querySelector('.pagination__arrow-left');
+pageList.innerText = '';
+const allPages = meta.pagination.pages;
+let firstPage = 1;
+const gap = 5;
+
+if (currentPage > 1) {
+  firstPage = currentPage;
+  leftButton.classList.add('pagination__arrow-left-active');
+}
 
 const createPageList = (number) => {
   const page = document.createElement('a');
@@ -16,21 +29,8 @@ const createPageList = (number) => {
   }
 
   return page;
-}
+};
 
-
-const pageList = document.querySelector('.pagination__list');
-const rightButton = document.querySelector('.pagination__arrow-right');
-const leftButton = document.querySelector('.pagination__arrow-left');
-pageList.innerText = '';
-const allPages = meta.pagination.pages;
-let firstPage = 1;
-const gap = 5;
-
-if (currentPage > 1) {
-  firstPage = currentPage;
-  leftButton.classList.add('pagination__arrow-left-active');
-}
 
 const renderPages = (firstPage, gap, app) => {
   let n = firstPage;
@@ -57,6 +57,7 @@ const renderPages = (firstPage, gap, app) => {
 
 
 renderPages(firstPage, gap, pageList);
+
 
 rightButton.addEventListener('click', e => {
   firstPage = firstPage + gap;

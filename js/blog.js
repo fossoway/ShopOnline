@@ -1,55 +1,41 @@
 export const loadArticle = async (page) => {
-  if (page === 1) {
-    const response = await fetch('https://gorest.co.in/public-api/posts');
-    const articleList = await response.json();
-    return {posts: articleList.data,
-      meta: articleList.meta};
-  }
+  // if (page === 1) {
+  //   const response = await fetch('https://gorest.co.in/public-api/posts');
+  //   const articleList = await response.json();
+  //   console.log(articleList);
+  //   return {posts: articleList.data,
+  //     meta: articleList.meta};
+  // }
   const response = await fetch(`https://gorest.co.in/public-api/posts?page=${page}`);
   const articleList = await response.json();
-  return {posts: articleList.data,
-    meta: articleList.meta};
+
+  return {
+    posts: articleList.data,
+    meta: articleList.meta,
+  };
 }
 
 
-const createPost = post => {
-  const blogItem = document.createElement('div');
-  blogItem.classList.add('blog__item');
-
-  const postImg = document.createElement('img');
-  postImg.src = 'img/blog/image.png';
-  postImg.width = 195;
-
-  const postDescription = document.createElement('div');
-  postDescription.classList.add('blog__description');
-
-  const postHeader = document.createElement('div');
-  postHeader.classList.add('blog__header');
-
-  const postTitle = document.createElement('h2');
-  postTitle.classList.add('blog__title');
+const createTitle = (postTitle, postId) => {
+  const title = document.createElement('h2');
+  title.classList.add('blog__title');
 
   const postLink = document.createElement('a');
-  postLink.href = `article.html?id=${post.id}`;
+  postLink.href = `article.html?id=${postId}`;
 
-  let title = post.title;
-  if (title.length > 50) {
-    title = post.title.slice(0, 50) + '...';
+  let postName = postTitle;
+  if (postName.length > 50) {
+    postName = postTitle.slice(0, 50) + '...';
   }
 
-  postLink.innerText = title;
-  postTitle.append(postLink);
+  postLink.innerText = postName;
+  title.append(postLink);
 
-  const postDate = document.createElement('p');
-  postDate.classList.add('blog__date');
-  const today = new Date();
-  postDate.innerText = today.toLocaleString();
+  return title;
+};
 
-  postHeader.append(postTitle, postDate);
 
-  const postInform = document.createElement('div');
-  postInform.classList.add('blog__inform');
-
+const createView = () => {
   const postView = document.createElement('p');
   postView.classList.add('blog__views');
   postView.innerText = '0';
@@ -57,6 +43,11 @@ const createPost = post => {
   viewIcon.classList.add('blog__views-icon');
   postView.prepend(viewIcon);
 
+  return postView;
+}
+
+
+const createComment = () => {
   const postComment = document.createElement('p');
   postComment.classList.add('blog__comments');
   postComment.innerText = '0';
@@ -64,11 +55,54 @@ const createPost = post => {
   commentIcon.classList.add('blog__comments-icon');
   postComment.prepend(commentIcon);
 
-  postInform.append(postView, postComment);
+  return postComment;
+}
 
+
+const createImg = (width) => {
+  const postImg = document.createElement('img');
+  postImg.src = 'img/blog/image.png';
+  postImg.width = width;
+
+  return postImg;
+}
+
+
+const createDate = () => {
+  const postDate = document.createElement('p');
+  postDate.classList.add('blog__date');
+  const today = new Date();
+  postDate.innerText = today.toLocaleString();
+   return postDate;
+}
+
+
+const createPost = post => {
+  const blogItem = document.createElement('div');
+  blogItem.classList.add('blog__item');
+
+  const img = createImg(195);
+
+  const postDescription = document.createElement('div');
+  postDescription.classList.add('blog__description');
+
+  const postHeader = document.createElement('div');
+  postHeader.classList.add('blog__header');
+
+  const title = createTitle(post.title, post.id);
+  const date = createDate();
+
+  postHeader.append(title, date);
+
+  const postInform = document.createElement('div');
+  postInform.classList.add('blog__inform');
+
+  const view = createView();
+  const comment = createComment();
+
+  postInform.append(view, comment);
   postDescription.append(postHeader, postInform);
-
-  blogItem.append(postImg, postDescription);
+  blogItem.append(img, postDescription);
 
   return blogItem;
 };
@@ -80,16 +114,18 @@ export const renderPosts = (postsList, app) => {
 }
 
 
-const currentURL = window.location.search;
-export const currentPage = +(new URLSearchParams(currentURL)).getAll('page');
-const pagesList = document.querySelectorAll('.pagination__item');
-export const {posts, meta} = await loadArticle(currentPage);
-const blog = document.querySelector('.blog');
-blog.innerText = '';
-renderPosts(posts, blog);
-pagesList.forEach(item => {
-  console.log(+item.innerText);
-  if (+item.innerText === currentPage) {
-    item.classList.add('pagination__item-active')
+const app = async () => {
+  const currentURL = window.location.search;
+  const currentPage = +(new URLSearchParams(currentURL)).getAll('page');
+  const {posts, meta} = await loadArticle(currentPage);
+  const blog = document.querySelector('.blog');
+  console.log(meta, currentPage);
+  renderPosts(posts, blog);
+  return {
+    page: currentPage,
+    meta,
   }
-});
+}
+
+
+export const {page, meta} = await app();
